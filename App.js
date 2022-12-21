@@ -8,6 +8,7 @@
 
 import React from 'react';
 import type {Node} from 'react';
+import Menu from './src/Menu';
 import {
   SafeAreaView,
   ScrollView,
@@ -88,6 +89,7 @@ const App: () => Node = () => {
           <Section title="Learn More">
             Read the docs to discover what to do next:
           </Section>
+          <Menu/>
           <LearnMoreLinks />
         </View>
       </ScrollView>
