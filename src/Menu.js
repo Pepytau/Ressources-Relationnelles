@@ -12,12 +12,6 @@ export default class Menu extends React.Component {
         return(
             <View style={styles.background}>
                 <Text style={styles.sectionTitle}>SIMON PU LE SEXE</Text>
-                <Button
-                    onPress={null}
-                    title="Zgeg"
-                    color="#ff0000"
-                    accessibilityLabel="Le bon zgegos"
-                />
             </View>
         )
     }
@@ -25,13 +19,13 @@ export default class Menu extends React.Component {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: Colors.lighter 
+        backgroundColor: Colors.red,
     },
     sectionTitle: {
       fontSize: 36,
       fontWeight: '800',
       alignSelf: "center",
-      color: Colors.black 
+      color: Colors.black,
     },
     button: {
         width: '30%'
