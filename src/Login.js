@@ -13,7 +13,7 @@ export default class Login extends React.Component{
             <View style={styles.background}>
                 <Text style={styles.title}>Bienvenue sur (Re)sources Relationnelles !</Text>
                 <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>this.setState({mail})}/>
-                <TextInput placeholder="Mot de passe" placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>this.setState({pwd})}/>
+                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>this.setState({pwd})}/>
                 <TouchableOpacity style={styles.button} onPress={this.checkLogs}>
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>
@@ -31,7 +31,7 @@ export default class Login extends React.Component{
         navigator = props.navigation;
     }
 
-    checkLogs = () => {
+    checkLogs = async () => {
         var mail = this.state.mail;
         var pwd = this.state.pwd;
         var apiUrl = "http://ezraspberryapis.ddns.net/apis/login.api.php";
@@ -43,16 +43,27 @@ export default class Login extends React.Component{
 
         formdata.append("mail",mail);
         formdata.append("password",pwd);
-
-        fetch(apiUrl,
+        const responseCode = await fetch(apiUrl,
         {
             method:'POST',
             headers:headers,
             body:formdata
         })
         .then((response)=>response.json())
-        .then((response)=>alert("REPONSE : "+response.message))
-        .catch((error)=>alert("ERREUR : "+error))
+        .then((response)=>{
+            return response[0].code;})
+        .catch((error)=>alert("ERREUR : "+error));
+        switch (responseCode) {
+            case '0001': 
+                navigator.navigate('Menu');
+                break;
+            case '0002': 
+                alert('Mot de passe incorrect.');
+                break;
+            case '0003': 
+                alert('Aucun utilisateur n\'est enregistré avec cet e-mail.');
+                break;
+        }
     }
 }
 
