@@ -11,21 +11,38 @@ export default class Menu extends React.Component {
     render() {
         return(
             <View style={styles.background}>
-                <Text style={styles.sectionTitle}>SIMON PU LE SEXE</Text>
+                <Text style={styles.title}>Bonjour {this.props.route.params.name}! </Text>
+                <Text style={styles.secondaryTitle}>Mes ressources :</Text>
             </View>
         )
     }
+
+    constructor(props)
+    {
+        super(props);
+        navigator = props.navigation;
+    }
+    //const { itemId } = route.params;
 }
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: Colors.red,
+        height: "100%",
+        backgroundColor: '#7FF868'
     },
-    sectionTitle: {
+    title: {
       fontSize: 36,
       fontWeight: '800',
       alignSelf: "center",
-      color: Colors.black,
+      margin:'5%',
+      color: "black",
+    },
+    secondaryTitle:{
+    fontSize: 25,
+      fontWeight: '800',
+      margin: '3%',
+      marginLeft: '15%',
+      color: "black"
     },
     button: {
         width: '30%'
