@@ -6,6 +6,7 @@ import {
     TextInput 
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { NetworkInfo } from "react-native-network-info";
 
 export default class Login extends React.Component{
     render() {
@@ -41,9 +42,13 @@ export default class Login extends React.Component{
             'Content-Type':'multipart/form-data',
         };
 
+        const ip = await NetworkInfo.getIPAddress();
+
         formdata.append("mail",mail);
         formdata.append("password",pwd);
-        const responseCode = await fetch(apiUrl,
+        formdata.append("ip",ip);
+
+        const response = await fetch(apiUrl,
         {
             method:'POST',
             headers:headers,
@@ -51,17 +56,22 @@ export default class Login extends React.Component{
         })
         .then((response)=>response.json())
         .then((response)=>{
-            return response[0].code;})
+            return response[0];
+        })
         .catch((error)=>alert("ERREUR : "+error));
-        switch (responseCode) {
+
+        switch (response.code) {
             case '0001': 
-                navigator.navigate('Menu');
+                navigator.navigate('Menu',{'name':response.nom});
                 break;
             case '0002': 
                 alert('Mot de passe incorrect.');
                 break;
             case '0003': 
                 alert('Aucun utilisateur n\'est enregistré avec cet e-mail.');
+                break;
+            case '0005': 
+                alert('POST ERROR');
                 break;
         }
     }
