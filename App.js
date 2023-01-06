@@ -7,19 +7,13 @@ import Login from './src/Login';
 
 const Stack = createStackNavigator();
 
-function MyStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
-
 export default function App() {
   return (
     <NavigationContainer>
-      <MyStack />
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

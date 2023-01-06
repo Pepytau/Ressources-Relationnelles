@@ -3,9 +3,9 @@ import {
     Text,
     View,
     StyleSheet,
-    Button
+    Image
   } from 'react-native';
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Menu extends React.Component {
     render() {
@@ -13,6 +13,13 @@ export default class Menu extends React.Component {
             <View style={styles.background}>
                 <Text style={styles.title}>Bonjour {this.props.route.params.name}! </Text>
                 <Text style={styles.secondaryTitle}>Mes ressources :</Text>
+                <View style={styles.bottomTab}>
+                    <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigator.navigate('Menu')}><Image style={styles.bottomImages} source={require('./images/home.png')}></Image><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Seach')}><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Discover')}><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Favorite')}><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Account')}><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
+                </View>
             </View>
         )
     }
@@ -46,5 +53,35 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '30%'
+    },
+    bottomTab: {
+        backgroundColor: "white",
+        alignSelf: "center",
+        margin: '2%',
+        position: "absolute",
+        bottom:0,
+        width: '95%',
+        height: 60,
+        borderRadius: 15,
+        flexDirection: "row",
+    },
+    bottomButton:{
+        borderLeftColor: 'grey',
+        borderLeftWidth: 1,
+        flex:1,
+    },
+    firstBottomButton:{
+        flex:1,
+    },
+    bottomButtonText:{
+        color:'black',
+        textAlign: "center",
+        fontSize: 10
+    },
+    bottomImages:{
+        alignSelf:"center",
+        marginTop: '5%',
+        height:35,
+        width:35
     }
   });
