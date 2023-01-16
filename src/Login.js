@@ -42,10 +42,13 @@ export default class Login extends React.Component{
             'Content-Type':'multipart/form-data',
         };
 
+        var bcrypt = require('react-native-bcrypt');
         const ip = await NetworkInfo.getIPAddress();
+        // var hash = bcrypt.hashSync(pwd, 8);
 
         formdata.append("mail",mail);
         formdata.append("password",pwd);
+        // formdata.append("password",hash);
         formdata.append("ip",ip);
 
         const response = await fetch(apiUrl,

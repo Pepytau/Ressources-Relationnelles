@@ -11,14 +11,14 @@ export default class Menu extends React.Component {
     render() {
         return(
             <View style={styles.background}>
-                <Text style={styles.title}>Bonjour {this.props.route.params.name}! </Text>
+                <Text style={styles.title}>Bonjour {params.name} !</Text>
                 <Text style={styles.secondaryTitle}>Mes ressources :</Text>
                 <View style={styles.bottomTab}>
-                    <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigator.navigate('Menu')}><Image style={styles.bottomImages} source={require('./images/home.png')}></Image><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
-                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Seach')}><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
-                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Discover')}><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
-                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Favorite')}><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
-                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Account')}><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
+                    <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigator.navigate('Menu')}><Image style={styles.bottomImages} source={require('./images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Seach')}><Image style={styles.bottomImages} source={require('./images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Discover')}><Image style={styles.bottomImages} source={require('./images/discover.png')}/><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Favorite')}><Image style={styles.bottomImages} source={require('./images/favorite.png')}/><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigator.navigate('Account')}><Image style={styles.bottomImages} source={require('./images/account.png')}/><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
                 </View>
             </View>
         )
@@ -28,8 +28,8 @@ export default class Menu extends React.Component {
     {
         super(props);
         navigator = props.navigation;
+        params = props.route.params;
     }
-    //const { itemId } = route.params;
 }
 
 const styles = StyleSheet.create({
@@ -57,20 +57,20 @@ const styles = StyleSheet.create({
     bottomTab: {
         backgroundColor: "white",
         alignSelf: "center",
-        margin: '2%',
         position: "absolute",
         bottom:0,
-        width: '95%',
+        width: '100%',
         height: 60,
-        borderRadius: 15,
         flexDirection: "row",
     },
     bottomButton:{
         borderLeftColor: 'grey',
+        borderTopWidth: 2,
         borderLeftWidth: 1,
         flex:1,
     },
     firstBottomButton:{
+        borderTopWidth: 2,
         flex:1,
     },
     bottomButtonText:{
@@ -80,8 +80,9 @@ const styles = StyleSheet.create({
     },
     bottomImages:{
         alignSelf:"center",
-        marginTop: '5%',
-        height:35,
-        width:35
+        marginTop: '10%',
+        marginBottom: '5%',
+        height:30,
+        width:30
     }
   });
