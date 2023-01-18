@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { CardStyleInterpolators } from '@react-navigation/stack';
+import { TransitionSpecs } from '@react-navigation/stack';
 
 import Menu from './src/components/Menu';
 import Login from './src/components/Login';
+import Search from './src/components/Search';
+import Discover from './src/components/Discover';
+import Favorite from './src/components/Favorite';
+import Account from './src/components/Account';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +19,26 @@ const defaultGlobalState = {
   surname: String,
   firstName: String
 };
+
+const animation = {
+  animation: 'timing',
+  config: {
+    duration:150 
+  },
+};
+
+const loginAnimation = {
+  animation: 'timing',
+  config: {
+    duration:250 
+  },
+};
+
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
 
 const GlobalStateContext = React.createContext(defaultGlobalState);
 const DispatchStateContext = React.createContext(undefined);
@@ -38,13 +64,16 @@ const GlobalStateProvider = ({ children }) => {
 
 export default function App() {
   const [state, dispatch] = useGlobalState();
-  console.log(state.mail)
   return (
     <GlobalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-          <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec }, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
+          <Stack.Screen name="Search" component={Search} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Favorite" component={Favorite} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Account" component={Account} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
         </Stack.Navigator>
       </NavigationContainer>
     </GlobalStateProvider>

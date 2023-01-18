@@ -49,7 +49,6 @@ export default function Login({navigation}){
             dispatch({ name: response.nom });
             dispatch({ firstName: response.prenom });
             dispatch({ surname: response.alias });
-            console.log(state);
             navigation.navigate('Menu');
             break;
         case '0002': 
