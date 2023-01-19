@@ -4,10 +4,14 @@ import {
     View,
     StyleSheet,
     Image,
+    Dimensions,
     ScrollView
   } from 'react-native';
 import { useGlobalState } from "../../App";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Carousel from 'react-native-reanimated-carousel';
+
+const { width } = Dimensions.get('window');
 
 export default function Menu({navigation}){
     const [state, dispatch] = useGlobalState();
@@ -22,7 +26,23 @@ export default function Menu({navigation}){
     return(
     <View style={styles.background}>
         <Text style={styles.title}>Bonjour {state.name} !</Text>
-        <Text style={styles.secondaryTitle}>Mes ressources :</Text>
+        <Text style={styles.secondaryTitle}>Mes ressources recommandées : </Text>
+        <Carousel style={styles.carousel}
+                mode="parallax"
+                width={width}
+                height={width / 2}
+                data={[...new Array(10).keys()]}
+                scrollAnimationDuration={100}
+                onSnapToItem={(index) => console.log('current index:', index)}
+                renderItem={({ index }) => (
+                    <View style={styles.recommendedRessource}>
+                        <Text style={styles.recommendedRessourceTitle}>
+                            Ressource {index}
+                        </Text>
+                    </View>
+                )}
+            />
+        <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
         <View style={styles.scrollViewWrapper}>
             <ScrollView>
                 {payments}
@@ -45,17 +65,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#7FF868'
     },
     title: {
-      fontSize: 36,
+      fontSize: 30,
       fontWeight: '800',
       alignSelf: "center",
       margin:'5%',
       color: "black",
     },
     secondaryTitle:{
-    fontSize: 25,
+      fontSize: 20,
       fontWeight: '800',
       margin: '3%',
-      marginLeft: '15%',
+      marginLeft: '5%',
       color: "black"
     },
     button: {
@@ -107,5 +127,19 @@ const styles = StyleSheet.create({
     },
     scrollViewWrapper:{
         height:'75%'
+    },
+    carousel:{
+        alignSelf: "center",
+    },
+    recommendedRessource:{
+            flex: 1,
+            text: "white",
+            borderRadius: 10,
+            backgroundColor: "grey"
+    },
+    recommendedRessourceTitle:{
+        fontSize:25,
+        margin: 10,
+        color: "black"
     }
   });
