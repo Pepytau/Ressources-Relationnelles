@@ -75,7 +75,7 @@ export default function Login({navigation}){
                 <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register',{mail: mail,pwd: pwd})}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.guestButton} onPress={() => {navigation.navigate('Menu')}}>
+                <TouchableOpacity style={styles.guestButton} onPress={() => {navigation.navigate('Menu');dispatch({ mail: "" });dispatch({ name: "" });dispatch({ firstName: "" });dispatch({ surname: "" });}}>
                     <Text style={styles.guestButtonText}>Continuer en tant qu'invité</Text>
                 </TouchableOpacity>
             </View>

@@ -21,32 +21,6 @@ export default function Menu({navigation}){
         isGuest = true;
     }
 
-    console.log(state.firstName)
-    let titleText;
-    if (isGuest){
-        titleText = "Bienvenue sur (Re)ssources Relationnelles !";
-    }
-    else{
-        titleText = "Bienvenue "+state.firstName+" !";
-    }
-
-    function renderScrollView(){
-        console.log("testtststt")
-        if(!isGuest){
-            console.log("CA PASSE")
-            return(
-                <View style={styles.scrollViewWrapper}>
-                    <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
-                    <ScrollView>
-                        {payments}
-                    </ScrollView>
-                </View>
-            )
-        }
-    }
-
-    console.log(isGuest);
-    
     var payments = [];
     for(let i = 0; i < 10; i++){
         payments.push(
@@ -54,34 +28,67 @@ export default function Menu({navigation}){
 		);
     }
 
+    function renderScrollView(){
+        if(!isGuest){
+            return(
+                <View style={styles.background}>
+                <Text style={styles.title}>Bienvenue {state.firstName} !</Text>
+                <Text style={styles.secondaryTitle} visibility='hidden'>Mes ressources recommandées : </Text>
+                <Carousel style={styles.carousel}
+                        mode="parallax"
+                        width={width}
+                        height={width / 2}
+                        data={[...new Array(10).keys()]}
+                        scrollAnimationDuration={100}
+                        onSnapToItem={(index) => console.log('current index:', index)}
+                        renderItem={({ index }) => (
+                            <View style={styles.recommendedRessource}>
+                                <Text style={styles.recommendedRessourceTitle}>
+                                    Ressource {index}
+                                </Text>
+                            </View>
+                        )}
+                />
+                <View style={styles.scrollViewWrapper}>
+                        <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
+                        <ScrollView>
+                            {payments}
+                        </ScrollView>
+                </View>
+                <View style={styles.bottomTab}>
+                    <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Discover')}><Image style={styles.bottomImages} source={require('../images/discover.png')}/><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Favorite')}><Image style={styles.bottomImages} source={require('../images/favorite.png')}/><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Account')}><Image style={styles.bottomImages} source={require('../images/account.png')}/><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
+                </View>
+            </View>
+            )
+        }
+        else{
+            return(
+            <View style={styles.background}>
+                <Text style={styles.title}>Bienvenue sur (Re)ssources Relationnelles !</Text>
+                <View style={styles.scrollViewWrapperGuest}>
+                        <Text style={styles.secondaryTitle}>Ressources recommandées :</Text>
+                        <ScrollView>
+                            {payments}
+                        </ScrollView>
+                </View>
+                <View style={styles.bottomTab}>
+                    <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Discover')}><Image style={styles.bottomImages} source={require('../images/discover.png')}/><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Favorite')}><Image style={styles.bottomImages} source={require('../images/favorite.png')}/><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
+                    <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Account')}><Image style={styles.bottomImages} source={require('../images/account.png')}/><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
+                </View>
+            </View>
+        )
+        }
+    }
+
     return(
-    <View style={styles.background}>
-        <Text style={styles.title}>{titleText}</Text>
-        <Text style={styles.secondaryTitle} visibility='hidden'>Mes ressources recommandées : </Text>
-        <Carousel style={styles.carousel}
-                mode="parallax"
-                width={width}
-                height={width / 2}
-                data={[...new Array(10).keys()]}
-                scrollAnimationDuration={100}
-                onSnapToItem={(index) => console.log('current index:', index)}
-                renderItem={({ index }) => (
-                    <View style={styles.recommendedRessource}>
-                        <Text style={styles.recommendedRessourceTitle}>
-                            Ressource {index}
-                        </Text>
-                    </View>
-                )}
-            />
-        {renderScrollView()}
-        <View style={styles.bottomTab}>
-            <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
-            <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
-            <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Discover')}><Image style={styles.bottomImages} source={require('../images/discover.png')}/><Text style={styles.bottomButtonText}>Découvrir</Text></TouchableOpacity></View>
-            <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Favorite')}><Image style={styles.bottomImages} source={require('../images/favorite.png')}/><Text style={styles.bottomButtonText}>Favoris</Text></TouchableOpacity></View>
-            <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Account')}><Image style={styles.bottomImages} source={require('../images/account.png')}/><Text style={styles.bottomButtonText}>Compte</Text></TouchableOpacity></View>
-        </View>
-    </View>
+        renderScrollView()
     )
 }
 
@@ -153,6 +160,9 @@ const styles = StyleSheet.create({
     },
     scrollViewWrapper:{
         height:'53%'
+    },
+    scrollViewWrapperGuest: {
+        height:'74%'
     },
     carousel:{
         alignSelf: "center",
