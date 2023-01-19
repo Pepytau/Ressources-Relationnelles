@@ -15,10 +15,10 @@ import Register from './src/components/Register';
 const Stack = createStackNavigator();
 
 const defaultGlobalState = {
-  mail: String,
-  name: String,
-  surname: String,
-  firstName: String
+  mail: '',
+  name: '',
+  surname: '',
+  firstName: ''
 };
 
 const animation = {

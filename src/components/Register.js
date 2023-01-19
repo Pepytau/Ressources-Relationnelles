@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useGlobalState } from "../../App"
 import {
     Text,
@@ -8,19 +8,26 @@ import {
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Login({navigation, route}){
+export default function Login({route, navigation}){
 
     const [state, dispatch] = useGlobalState();
     const { mail, pwd } = route.params;
-    console.log(mail+pwd)
+    const [stateMail, setMail] = useState(0);
+    const [statePwd, setPwd] = useState(0);
+    const [surname, setSurname] = useState(0);
+    const [name, setName] = useState(0);
+    const [firstName, setFirstName] = useState(0);
 
     return (
             <View style={styles.background}>
                 <Text style={styles.title}>S'enregistrer</Text>
-                <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
-                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
+                <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" value={mail} style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
+                <TextInput placeholder="Pseudo" placeholderTextColor="black" style={styles.textInput} onChangeText={surname=>setSurname(surname)}/>
+                <TextInput placeholder="Nom" placeholderTextColor="black" style={styles.textInput} onChangeText={name=>setName(name)}/>
+                <TextInput placeholder="Prénom" placeholderTextColor="black" style={styles.textInput} onChangeText={firstName=>setFirstName(firstName)}/>
+                <TextInput placeholder="Mot de passe" secureTextEntry={true} value={pwd} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
                 <TouchableOpacity style={styles.button} onPress={this.checkLogs}>
-                    <Text style={styles.buttonText}>Se connecter</Text>
+                    <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>
             </View>
     )

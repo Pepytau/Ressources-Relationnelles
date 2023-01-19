@@ -15,6 +15,37 @@ const { width } = Dimensions.get('window');
 
 export default function Menu({navigation}){
     const [state, dispatch] = useGlobalState();
+
+    let isGuest = false;
+    if (state.mail == '') {
+        isGuest = true;
+    }
+
+    console.log(state.firstName)
+    let titleText;
+    if (isGuest){
+        titleText = "Bienvenue sur (Re)ssources Relationnelles !";
+    }
+    else{
+        titleText = "Bienvenue "+state.firstName+" !";
+    }
+
+    function renderScrollView(){
+        console.log("testtststt")
+        if(!isGuest){
+            console.log("CA PASSE")
+            return(
+                <View style={styles.scrollViewWrapper}>
+                    <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
+                    <ScrollView>
+                        {payments}
+                    </ScrollView>
+                </View>
+            )
+        }
+    }
+
+    console.log(isGuest);
     
     var payments = [];
     for(let i = 0; i < 10; i++){
@@ -25,8 +56,8 @@ export default function Menu({navigation}){
 
     return(
     <View style={styles.background}>
-        <Text style={styles.title}>Bonjour {state.name} !</Text>
-        <Text style={styles.secondaryTitle}>Mes ressources recommandées : </Text>
+        <Text style={styles.title}>{titleText}</Text>
+        <Text style={styles.secondaryTitle} visibility='hidden'>Mes ressources recommandées : </Text>
         <Carousel style={styles.carousel}
                 mode="parallax"
                 width={width}
@@ -42,12 +73,7 @@ export default function Menu({navigation}){
                     </View>
                 )}
             />
-        <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
-        <View style={styles.scrollViewWrapper}>
-            <ScrollView>
-                {payments}
-            </ScrollView>
-        </View>
+        {renderScrollView()}
         <View style={styles.bottomTab}>
             <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
             <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
@@ -126,7 +152,7 @@ const styles = StyleSheet.create({
         color: "black"
     },
     scrollViewWrapper:{
-        height:'46%'
+        height:'53%'
     },
     carousel:{
         alignSelf: "center",

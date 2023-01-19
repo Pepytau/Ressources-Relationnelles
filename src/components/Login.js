@@ -72,8 +72,11 @@ export default function Login({navigation}){
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>
                 <Text style={styles.registerText}>Pas encore de compte ?</Text>
-                <TouchableOpacity style={styles.registerButton} onPress={(mail, pwd) => navigation.navigate('Register',{mail: mail,pwd: pwd})}>
+                <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register',{mail: mail,pwd: pwd})}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.guestButton} onPress={() => {navigation.navigate('Menu')}}>
+                    <Text style={styles.guestButtonText}>Continuer en tant qu'invité</Text>
                 </TouchableOpacity>
             </View>
     )
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
         color: 'white',
         alignSelf: "center",
         margin: '3%',
-        marginTop: '80%',
+        marginTop: '70%',
         fontSize: 15,
         fontWeight: "bold"
     }, 
@@ -130,5 +133,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 25,
         borderRadius: 10
+    },
+    guestButton:{
+        width: '50%',
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: '6%',
+        height: 25,
+        borderRadius: 10
+    },
+    guestButtonText:{
+        color: 'white',
+        textDecorationLine: "underline"
     }
 });
