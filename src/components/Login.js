@@ -7,7 +7,7 @@ import {
     TextInput 
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { NetworkInfo } from "react-native-network-info";
+import publicIP from 'react-native-public-ip';
 
 export default function Login({navigation}){
 
@@ -24,8 +24,10 @@ export default function Login({navigation}){
     };
 
     //var bcrypt = require('react-native-bcrypt');
-    const ip = await NetworkInfo.getIPAddress();
-    // var hash = bcrypt.hashSync(pwd, 8);
+    // const hash = bcrypt.hashSync(pwd, 8);
+
+    const ip = await publicIP();
+
     formdata.append("mail",mail);
     formdata.append("password",pwd);
     // formdata.append("password",hash);
