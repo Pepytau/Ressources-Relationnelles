@@ -72,7 +72,7 @@ export default function Login({navigation}){
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>
                 <Text style={styles.registerText}>Pas encore de compte ?</Text>
-                <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Menu')}>
+                <TouchableOpacity style={styles.registerButton} onPress={(mail, pwd) => navigation.navigate('Register',{mail: mail,pwd: pwd})}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>
             </View>

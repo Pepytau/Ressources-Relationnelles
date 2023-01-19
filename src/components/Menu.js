@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         color: "black"
     },
     scrollViewWrapper:{
-        height:'75%'
+        height:'46%'
     },
     carousel:{
         alignSelf: "center",

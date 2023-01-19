@@ -10,6 +10,7 @@ import Search from './src/components/Search';
 import Discover from './src/components/Discover';
 import Favorite from './src/components/Favorite';
 import Account from './src/components/Account';
+import Register from './src/components/Register';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,7 @@ const defaultGlobalState = {
 const animation = {
   animation: 'timing',
   config: {
-    duration:150 
+    duration:100 
   },
 };
 
@@ -74,6 +75,7 @@ export default function App() {
           <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Favorite" component={Favorite} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Account" component={Account} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Register" component={Register} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec },cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }} />
         </Stack.Navigator>
       </NavigationContainer>
     </GlobalStateProvider>
