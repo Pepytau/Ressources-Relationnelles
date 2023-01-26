@@ -15,7 +15,7 @@ export default function Login({navigation}){
     const [mail, setMail] = useState(0);
     const [pwd, setPwd] = useState(0);
 
-    checkLogs = async () => {
+    connect = async () => {
     var apiUrl = "http://ezraspberryapis.ddns.net/apis/login.api.php";
     var formdata = new FormData();
     var headers = {
@@ -39,7 +39,7 @@ export default function Login({navigation}){
         headers:headers,
         body:formdata
     })
-    .then((response)=>response.json())
+    .then((response)=>response.json().catch(()=>alert('Une erreur s\'est produite, veuillez réessayer plus tard.')))
     .then((response)=>{
         return response[0];
     })
@@ -60,7 +60,7 @@ export default function Login({navigation}){
             alert('Aucun utilisateur n\'est enregistré avec cet e-mail.');
             break;
         case '0005': 
-            alert('POST ERROR');
+            alert('Une erreur s\'est produite, veuillez réessayer plus tard.');
             break;
         }
     }
@@ -70,11 +70,11 @@ export default function Login({navigation}){
                 <Text style={styles.title}>Bienvenue sur (Re)sources Relationnelles !</Text>
                 <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
                 <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
-                <TouchableOpacity style={styles.button} onPress={this.checkLogs}>
+                <TouchableOpacity style={styles.button} onPress={this.connect}>
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>
                 <Text style={styles.registerText}>Pas encore de compte ?</Text>
-                <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register',{mail: mail,pwd: pwd})}>
+                <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register')}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.guestButton} onPress={() => {navigation.navigate('Menu');dispatch({ mail: "" });dispatch({ name: "" });dispatch({ firstName: "" });dispatch({ surname: "" });}}>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
     Text,
     View,
@@ -15,6 +15,34 @@ const { width } = Dimensions.get('window');
 
 export default function Menu({navigation}){
     const [state, dispatch] = useGlobalState();
+    const [ressources, setRessources] = useState(0);
+
+    useEffect(() => {
+        async function getResourceList(){
+            var apiUrl = "http://ezraspberryapis.ddns.net/apis/getRessourceList.api.php";
+            var headers = {
+                'Accept':'application/json',
+                'Content-Type':'multipart/form-data',
+            };
+
+            const response = await fetch(apiUrl,
+            {
+                method:'GET',
+                headers:headers
+            })
+            .then((response)=>response.json().catch(()=>alert('Une erreur s\'est produite, veuillez réessayer plus tard.')))
+            .then((response)=>{
+                return response;
+            })
+            .catch((error)=>alert("ERREUR : "+error));
+            
+            for(var i = 0; i < response.length; ++i) {
+            var json = response[i];
+            }
+            setRessources(response);
+        }
+        getResourceList()
+      },[]);
 
     let isGuest = false;
     if (state.mail == '') {
@@ -22,9 +50,9 @@ export default function Menu({navigation}){
     }
 
     var payments = [];
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < ressources.length; i++){
         payments.push(
-            <View key={i} style={styles.ressource}><Text style={styles.ressourceTitle}>Ressource test</Text></View>
+            <View key={i} style={styles.ressource}><Text style={styles.ressourceTitle}>{ressources[i].titre}</Text></View>
 		);
     }
 
@@ -40,7 +68,7 @@ export default function Menu({navigation}){
                         height={width / 2}
                         data={[...new Array(10).keys()]}
                         scrollAnimationDuration={100}
-                        onSnapToItem={(index) => console.log('current index:', index)}
+                        // onSnapToItem={(index) => console.log('current index:', index)}
                         renderItem={({ index }) => (
                             <View style={styles.recommendedRessource}>
                                 <Text style={styles.recommendedRessourceTitle}>
