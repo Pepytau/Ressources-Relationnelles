@@ -11,6 +11,8 @@ import { useGlobalState } from "../../App";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Carousel from 'react-native-reanimated-carousel';
 
+import styles from "../styles/styles";
+
 const { width } = Dimensions.get('window');
 
 export default function Menu({navigation}){
@@ -35,25 +37,22 @@ export default function Menu({navigation}){
                 return response;
             })
             .catch((error)=>alert("ERREUR : "+error));
-            
-            for(var i = 0; i < response.length; ++i) {
-            var json = response[i];
-            }
+        
             setRessources(response);
         }
         getResourceList()
       },[]);
 
+    var RessourceList = [];
+    for(let i = 0; i < ressources.length; i++){
+          RessourceList.push(
+              <View key={i}><TouchableOpacity style={styles.ressource} onPress={() => navigation.navigate('RessourceDetail',{ressource: ressources[i]})}><Text style={styles.ressourceTitle}>{ressources[i].titre}</Text></TouchableOpacity></View>
+          );
+    }
+
     let isGuest = false;
     if (state.mail == '') {
         isGuest = true;
-    }
-
-    var payments = [];
-    for(let i = 0; i < ressources.length; i++){
-        payments.push(
-            <View key={i} style={styles.ressource}><Text style={styles.ressourceTitle}>{ressources[i].titre}</Text></View>
-		);
     }
 
     function renderScrollView(){
@@ -80,7 +79,7 @@ export default function Menu({navigation}){
                 <View style={styles.scrollViewWrapper}>
                         <Text style={styles.secondaryTitle}>Mes ressources suivies:</Text>
                         <ScrollView>
-                            {payments}
+                            {RessourceList}
                         </ScrollView>
                 </View>
                 <View style={styles.bottomTab}>
@@ -100,7 +99,7 @@ export default function Menu({navigation}){
                 <View style={styles.scrollViewWrapperGuest}>
                         <Text style={styles.secondaryTitle}>Ressources recommandées :</Text>
                         <ScrollView>
-                            {payments}
+                            {RessourceList}
                         </ScrollView>
                 </View>
                 <View style={styles.bottomTab}>
@@ -119,91 +118,3 @@ export default function Menu({navigation}){
         renderScrollView()
     )
 }
-
-const styles = StyleSheet.create({
-    background: {
-        height: "100%",
-        backgroundColor: '#7FF868'
-    },
-    title: {
-      fontSize: 30,
-      fontWeight: '800',
-      alignSelf: "center",
-      margin:'5%',
-      color: "black",
-    },
-    secondaryTitle:{
-      fontSize: 20,
-      fontWeight: '800',
-      margin: '3%',
-      marginLeft: '5%',
-      color: "black"
-    },
-    button: {
-        width: '30%'
-    },
-    bottomTab: {
-        backgroundColor: "white",
-        alignSelf: "center",
-        position: "absolute",
-        bottom:0,
-        width: '100%',
-        height: 60,
-        flexDirection: "row",
-    },
-    bottomButton:{
-        borderLeftColor: 'grey',
-        borderTopWidth: 2,
-        borderLeftWidth: 1,
-        flex:1,
-    },
-    firstBottomButton:{
-        borderTopWidth: 2,
-        flex:1,
-    },
-    bottomButtonText:{
-        color:'black',
-        textAlign: "center",
-        fontSize: 10
-    },
-    bottomImages:{
-        alignSelf:"center",
-        marginTop: '10%',
-        marginBottom: '5%',
-        height:30,
-        width:30
-    },
-    ressource:{
-        width:'90%',
-        alignSelf: "center",
-        margin: 10,
-        height:130,
-        borderRadius: 10,
-        backgroundColor: "#D7d8d8"
-    },
-    ressourceTitle:{
-        fontSize:25,
-        margin: 10,
-        color: "black"
-    },
-    scrollViewWrapper:{
-        height:'53%'
-    },
-    scrollViewWrapperGuest: {
-        height:'74%'
-    },
-    carousel:{
-        alignSelf: "center",
-    },
-    recommendedRessource:{
-            flex: 1,
-            text: "white",
-            borderRadius: 10,
-            backgroundColor: "grey"
-    },
-    recommendedRessourceTitle:{
-        fontSize:25,
-        margin: 10,
-        color: "black"
-    }
-  });

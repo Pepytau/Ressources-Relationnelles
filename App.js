@@ -11,6 +11,7 @@ import Discover from './src/components/Discover';
 import Favorite from './src/components/Favorite';
 import Account from './src/components/Account';
 import Register from './src/components/Register';
+import RessourceDetail from './src/components/RessourceDetail';
 
 const Stack = createStackNavigator();
 
@@ -71,6 +72,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec }, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
+          <Stack.Screen name="RessourceDetail" component={RessourceDetail} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec }, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
           <Stack.Screen name="Search" component={Search} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Favorite" component={Favorite} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />

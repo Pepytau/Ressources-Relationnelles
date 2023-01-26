@@ -9,6 +9,8 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import publicIP from 'react-native-public-ip';
 
+import styles from "../styles/styles";
+
 export default function Login({navigation}){
 
     const [state, dispatch] = useGlobalState();
@@ -73,52 +75,18 @@ export default function Login({navigation}){
                 <TouchableOpacity style={styles.button} onPress={this.connect}>
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>
-                <Text style={styles.registerText}>Pas encore de compte ?</Text>
-                <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Register')}>
+                <Text style={loginStyles.registerText}>Pas encore de compte ?</Text>
+                <TouchableOpacity style={loginStyles.registerButton} onPress={() => navigation.navigate('Register')}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.guestButton} onPress={() => {navigation.navigate('Menu');dispatch({ mail: "" });dispatch({ name: "" });dispatch({ firstName: "" });dispatch({ surname: "" });}}>
-                    <Text style={styles.guestButtonText}>Continuer en tant qu'invité</Text>
+                <TouchableOpacity style={loginStyles.guestButton} onPress={() => {navigation.navigate('Menu');dispatch({ mail: "" });dispatch({ name: "" });dispatch({ firstName: "" });dispatch({ surname: "" });}}>
+                    <Text style={loginStyles.guestButtonText}>Continuer en tant qu'invité</Text>
                 </TouchableOpacity>
             </View>
     )
 }
-const styles = StyleSheet.create({
-    background: {
-        height: "100%",
-        backgroundColor: '#7FF868'
-    },
-    title: {
-    margin: '10%',
-    marginTop: '15%',
-    fontSize: 25,
-    fontWeight: '800',
-    textAlign: "center",
-    color: 'black'
-    },
-    button: {
-        width: '50%',
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: '8%',
-        backgroundColor: 'white',
-        height: 30,
-        borderRadius: 10
-    },
-    buttonText: {
-        color: 'black'
-    },
-    textInput: {
-        alignSelf: "center",
-        color: "black",
-        placeholderTextColor: "black",
-        borderWidth: 1,
-        borderRadius: 10,
-        backgroundColor: "white",
-        width: '85%',
-        margin: '3%'
-    },
+
+const loginStyles = StyleSheet.create({
     registerText: {
         color: 'white',
         alignSelf: "center",
@@ -149,4 +117,4 @@ const styles = StyleSheet.create({
         color: 'white',
         textDecorationLine: "underline"
     }
-});
+})

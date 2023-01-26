@@ -9,11 +9,15 @@ import {
 
 import styles from "../styles/styles";
 
-export default function Favorite({navigation}){
+export default function RessourceDetail({navigation, route}){
     const [state, dispatch] = useGlobalState();
+    const { ressource } = route.params;
+    console.log(ressource)
     return(
         <View style={styles.background}>
-            <Text style={styles.title}>Favoris</Text>
+            <Text style={styles.title}>{ressource.titre}</Text>
+            <Text style={styles.secondaryTitle}>Créée le {ressource.dateCreation}</Text>
+            <Text style={styles.contentText}>{ressource.contenu}</Text>
             <View style={styles.bottomTab}>
                 <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
                 <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>

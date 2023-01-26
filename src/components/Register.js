@@ -9,7 +9,9 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import publicIP from 'react-native-public-ip';
 
-export default function Login({navigation}){
+import styles from "../styles/styles";
+
+export default function Register({navigation}){
 
     const [state, dispatch] = useGlobalState();
     const [stateMail, setMail] = useState(0);
@@ -135,57 +137,3 @@ export default function Login({navigation}){
             </View>
     )
 }
-const styles = StyleSheet.create({
-    background: {
-        height: "100%",
-        backgroundColor: '#7FF868'
-    },
-    title: {
-    margin: '10%',
-    marginTop: '15%',
-    fontSize: 25,
-    fontWeight: '800',
-    textAlign: "center",
-    color: 'black'
-    },
-    button: {
-        width: '50%',
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: '8%',
-        backgroundColor: 'white',
-        height: 30,
-        borderRadius: 10
-    },
-    buttonText: {
-        color: 'black'
-    },
-    textInput: {
-        alignSelf: "center",
-        color: "black",
-        placeholderTextColor: "black",
-        borderWidth: 1,
-        borderRadius: 10,
-        backgroundColor: "white",
-        width: '85%',
-        margin: '3%'
-    },
-    registerText: {
-        color: 'white',
-        alignSelf: "center",
-        margin: '3%',
-        marginTop: '80%',
-        fontSize: 15,
-        fontWeight: "bold"
-    }, 
-    registerButton: {
-        width: '25%',
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: 'white',
-        height: 25,
-        borderRadius: 10
-    }
-});
