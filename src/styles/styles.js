@@ -70,7 +70,7 @@ export default styles = StyleSheet.create({
         backgroundColor: "#D7d8d8"
     },
     ressourceTitle:{
-        fontSize:25,
+        fontSize:20,
         margin: 10,
         color: "black"
     },

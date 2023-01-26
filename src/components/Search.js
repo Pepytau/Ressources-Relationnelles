@@ -8,6 +8,8 @@ import {
     Image
 } from 'react-native';
 
+import styles from "../styles/styles";
+
 export default function Search({navigation}){
     const [state, dispatch] = useGlobalState();
     return(
@@ -23,48 +25,3 @@ export default function Search({navigation}){
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    background: {
-        height: "100%",
-        backgroundColor: '#7FF868'
-    },
-    title: {
-        fontSize: 36,
-        fontWeight: '800',
-        alignSelf: "center",
-        margin:'5%',
-        color: "black",
-    },
-    bottomTab: {
-        backgroundColor: "white",
-        alignSelf: "center",
-        position: "absolute",
-        bottom:0,
-        width: '100%',
-        height: 60,
-        flexDirection: "row",
-    },
-    bottomButton:{
-        borderLeftColor: 'grey',
-        borderTopWidth: 2,
-        borderLeftWidth: 1,
-        flex:1,
-    },
-    firstBottomButton:{
-        borderTopWidth: 2,
-        flex:1,
-    },
-    bottomButtonText:{
-        color:'black',
-        textAlign: "center",
-        fontSize: 10
-    },
-    bottomImages:{
-        alignSelf:"center",
-        marginTop: '10%',
-        marginBottom: '5%',
-        height:30,
-        width:30
-    },
-  });

@@ -25,14 +25,7 @@ const defaultGlobalState = {
 const animation = {
   animation: 'timing',
   config: {
-    duration:100 
-  },
-};
-
-const loginAnimation = {
-  animation: 'timing',
-  config: {
-    duration:250 
+    duration:50 
   },
 };
 

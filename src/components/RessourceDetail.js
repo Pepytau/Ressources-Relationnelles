@@ -16,7 +16,7 @@ export default function RessourceDetail({navigation, route}){
     return(
         <View style={styles.background}>
             <Text style={styles.title}>{ressource.titre}</Text>
-            <Text style={styles.secondaryTitle}>Créée le {ressource.dateCreation}</Text>
+            <Text style={styles.secondaryTitle}>Créée le {ressource.dateCreation} par {ressource.createur}</Text>
             <Text style={styles.contentText}>{ressource.contenu}</Text>
             <View style={styles.bottomTab}>
                 <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
