@@ -12,10 +12,12 @@ import styles from "../styles/styles";
 export default function RessourceDetail({navigation, route}){
     const [state, dispatch] = useGlobalState();
     const { ressource } = route.params;
-    console.log(ressource)
     return(
         <View style={styles.background}>
-            <Text style={styles.title}>{ressource.titre}</Text>
+            <View style={styles.banner}>
+            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}><Image style={styles.backArrow}  source={require('../images/backArrow.png')}/></TouchableOpacity>
+            <Text style={styles.bannerTitle}>{ressource.titre}</Text>
+            </View>
             <Text style={styles.secondaryTitle}>Créée le {ressource.dateCreation} par {ressource.createur}</Text>
             <Text style={styles.contentText}>{ressource.contenu}</Text>
             <View style={styles.bottomTab}>

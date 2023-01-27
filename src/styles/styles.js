@@ -13,6 +13,12 @@ export default styles = StyleSheet.create({
       textAlign: 'center',  
       color: "black",
     },
+    bannerTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        margin:'3%',
+        color: "black",
+      },
     secondaryTitle:{
         fontSize: 20,
         fontWeight: '600',
@@ -117,4 +123,15 @@ export default styles = StyleSheet.create({
         width: '85%',
         margin: '3%'
     },
+    backArrow:{
+        aspectRatio: 3/2.3,
+        height: 30
+    },
+    backButton:{
+        margin: '10%',
+        width: 45
+    },
+    banner: {
+        flexDirection: 'row'
+    }
   });
