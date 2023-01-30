@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGlobalState } from "../../App";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { 
     Text,   
     View,
@@ -15,11 +15,15 @@ export default function RessourceDetail({navigation, route}){
     return(
         <View style={styles.background}>
             <View style={styles.banner}>
-            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}><Image style={styles.backArrow}  source={require('../images/backArrow.png')}/></TouchableOpacity>
-            <Text style={styles.bannerTitle}>{ressource.titre}</Text>
+                    <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}><Image style={styles.backArrow}  source={require('../images/backArrow.png')}/></TouchableOpacity>
+                <View style={styles.bannerText}>
+                    <Text style={styles.bannerTitle}>{ressource.titre}</Text>
+                    <Text style={styles.bannerInfos}>Créée le {ressource.dateCreation} par {ressource.createur}</Text>
+                </View>
             </View>
-            <Text style={styles.secondaryTitle}>Créée le {ressource.dateCreation} par {ressource.createur}</Text>
-            <Text style={styles.contentText}>{ressource.contenu}</Text>
+            <ScrollView>
+                <Text style={styles.contentText}>{ressource.contenu}</Text>
+            </ScrollView>
             <View style={styles.bottomTab}>
                 <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
                 <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.navigate('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>

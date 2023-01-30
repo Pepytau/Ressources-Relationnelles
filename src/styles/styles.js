@@ -3,22 +3,15 @@ import { StyleSheet } from 'react-native'
 export default styles = StyleSheet.create({
     background: {
         height: "100%",
-        backgroundColor: '#7FF868'
+        backgroundColor: '#59981A'
     },
     title: {
       fontSize: 30,
       fontWeight: '800',
-      alignSelf: "center",
       margin:'5%',
       textAlign: 'center',  
       color: "black",
     },
-    bannerTitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        margin:'3%',
-        color: "black",
-      },
     secondaryTitle:{
         fontSize: 20,
         fontWeight: '600',
@@ -27,11 +20,20 @@ export default styles = StyleSheet.create({
         textAlign: 'center',  
         color: "black",
     },
+    tertiaryTitle:{
+        fontSize: 17,
+        fontWeight: '600',
+        alignSelf: "center",
+        margin:'2%',
+        textAlign: 'center',  
+        color: "white",
+    },
     contentText:{
         fontSize: 15,
-        margin:'2%',
+        margin:'3%',
         fontWeight: '400',
-        color: "black",
+        color: "white",
+        textAlign: 'justify'
     },
     button: {
         width: '30%'
@@ -81,7 +83,7 @@ export default styles = StyleSheet.create({
         color: "black"
     },
     scrollViewWrapper:{
-        height:'53%'
+        height:'54%'
     },
     scrollViewWrapperGuest: {
         height:'74%'
@@ -125,13 +127,30 @@ export default styles = StyleSheet.create({
     },
     backArrow:{
         aspectRatio: 3/2.3,
-        height: 30
+        margin: '35%',
+        height: 18
     },
     backButton:{
-        margin: '10%',
-        width: 45
+        width: 45,
     },
     banner: {
+        borderBottomWidth: 1,
+        borderBottomColor: "rgba(255, 255, 255, 0.3)",
         flexDirection: 'row'
-    }
+    },
+    bannerTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: "black",
+      },
+    bannerInfos: {
+        fontSize: 10,
+        fontWeight: '600',
+        color: "white",
+        opacity: 0.8
+    },
+    bannerText: {
+        margin: '1%',
+        marginLeft: '3%'
+    },
   });
