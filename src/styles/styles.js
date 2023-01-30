@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-
 export default styles = StyleSheet.create({
     background: {
         height: "100%",
@@ -7,33 +6,33 @@ export default styles = StyleSheet.create({
     },
     title: {
       fontSize: 30,
-      fontWeight: '800',
       margin:'5%',
       textAlign: 'center',  
       color: "black",
+      fontFamily: 'Raleway-Bold'
     },
     secondaryTitle:{
         fontSize: 20,
-        fontWeight: '600',
         alignSelf: "center",
         margin:'2%',
         textAlign: 'center',  
         color: "black",
+        fontFamily: 'Raleway-SemiBold'
     },
     tertiaryTitle:{
         fontSize: 17,
-        fontWeight: '600',
         alignSelf: "center",
         margin:'2%',
         textAlign: 'center',  
         color: "white",
+        fontFamily: 'Raleway-SemiBold'
     },
     contentText:{
         fontSize: 15,
         margin:'3%',
-        fontWeight: '400',
         color: "white",
-        textAlign: 'justify'
+        textAlign: 'justify',
+        fontFamily: 'Raleway-SemiBold'
     },
     button: {
         width: '30%'
@@ -60,7 +59,8 @@ export default styles = StyleSheet.create({
     bottomButtonText:{
         color:'black',
         textAlign: "center",
-        fontSize: 10
+        fontSize: 10,
+        fontFamily: 'Raleway-SemiBold'
     },
     bottomImages:{
         alignSelf:"center",
@@ -80,7 +80,8 @@ export default styles = StyleSheet.create({
     ressourceTitle:{
         fontSize:20,
         margin: 10,
-        color: "black"
+        color: "black",
+        fontFamily: 'Raleway-SemiBold'
     },
     scrollViewWrapper:{
         height:'54%'
@@ -93,14 +94,14 @@ export default styles = StyleSheet.create({
     },
     recommendedRessource:{
             flex: 1,
-            text: "white",
             borderRadius: 10,
-            backgroundColor: "grey"
+            backgroundColor: "#3D550C",
     },
     recommendedRessourceTitle:{
         fontSize:25,
         margin: 10,
-        color: "black"
+        color: "white",
+        fontFamily: 'Raleway-SemiBold'
     },
     button: {
         width: '50%',
@@ -113,12 +114,14 @@ export default styles = StyleSheet.create({
         borderRadius: 10
     },
     buttonText: {
-        color: 'black'
+        color: 'black',
+        fontFamily: 'Raleway-SemiBold'
     },
     textInput: {
         alignSelf: "center",
         color: "black",
         placeholderTextColor: "black",
+        fontFamily: 'Raleway-SemiBold',
         borderWidth: 1,
         borderRadius: 10,
         backgroundColor: "white",
@@ -140,17 +143,18 @@ export default styles = StyleSheet.create({
     },
     bannerTitle: {
         fontSize: 20,
-        fontWeight: '600',
         color: "black",
+        fontFamily: 'Raleway-Bold'
       },
     bannerInfos: {
         fontSize: 10,
-        fontWeight: '600',
         color: "white",
-        opacity: 0.8
+        opacity: 0.8,
+        fontFamily: 'Raleway-Regular'
     },
     bannerText: {
         margin: '1%',
-        marginLeft: '3%'
+        marginLeft: '3%',
+        fontFamily: 'Raleway-SemiBold'
     },
   });

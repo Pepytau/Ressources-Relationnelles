@@ -25,7 +25,7 @@ const defaultGlobalState = {
 const animation = {
   animation: 'timing',
   config: {
-    duration:50 
+    duration:0
   },
 };
 
