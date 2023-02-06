@@ -12,6 +12,7 @@ import Favorite from './src/components/Favorite';
 import Account from './src/components/Account';
 import Register from './src/components/Register';
 import RessourceDetail from './src/components/RessourceDetail';
+import CreateRessource from './src/components/CreateRessource';
 
 const Stack = createStackNavigator();
 
@@ -70,6 +71,7 @@ export default function App() {
           <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Favorite" component={Favorite} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Account" component={Account} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="CreateRessource" component={CreateRessource} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
           <Stack.Screen name="Register" component={Register} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec },cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }} />
         </Stack.Navigator>
       </NavigationContainer>
