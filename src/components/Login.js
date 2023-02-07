@@ -93,7 +93,7 @@ const loginStyles = StyleSheet.create({
         margin: '3%',
         marginTop: '70%',
         fontSize: 15,
-        fontWeight: "bold"
+        fontFamily: 'Raleway-Bold'
     }, 
     registerButton: {
         width: '25%',
@@ -115,6 +115,7 @@ const loginStyles = StyleSheet.create({
     },
     guestButtonText:{
         color: 'white',
-        textDecorationLine: "underline"
+        textDecorationLine: "underline",
+        fontFamily: 'Raleway-SemiBold'
     }
 })
