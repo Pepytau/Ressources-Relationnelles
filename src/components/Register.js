@@ -150,11 +150,11 @@ export default function Register({navigation}){
                     </View>
                 </Modal>
                 <Text style={styles.title}>S'enregistrer</Text>
-                <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
-                <TextInput placeholder="Pseudo" placeholderTextColor="black" style={styles.textInput} onChangeText={surname=>setSurname(surname)}/>
-                <TextInput placeholder="Nom" placeholderTextColor="black" style={styles.textInput} onChangeText={name=>setName(name)}/>
-                <TextInput placeholder="Prénom" placeholderTextColor="black" style={styles.textInput} onChangeText={firstName=>setFirstName(firstName)}/>
-                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
+                <TextInput placeholder="Adresse e-mail" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
+                <TextInput placeholder="Pseudo" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={surname=>setSurname(surname)}/>
+                <TextInput placeholder="Nom" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={name=>setName(name)}/>
+                <TextInput placeholder="Prénom" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={firstName=>setFirstName(firstName)}/>
+                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
                 <TouchableOpacity style={styles.button} onPress={this.register}>
                     <Text style={styles.buttonText}>S'inscrire</Text>
                 </TouchableOpacity>

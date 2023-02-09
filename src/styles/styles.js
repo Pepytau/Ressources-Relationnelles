@@ -198,5 +198,18 @@ export default styles = StyleSheet.create({
         textAlign: 'center',
         color: 'black'
     },
+    searchBar: {
+        alignSelf: "center",
+        color: "black",
+        placeholderTextColor: "black",
+        fontFamily: 'Raleway-SemiBold',
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: "white",
+        textAlign: "center",
+        width: '90%',
+        margin: '3%',
+        maxHeight: '50%'
+    }
     
   });

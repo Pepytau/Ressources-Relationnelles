@@ -32,9 +32,6 @@ export default function Menu({navigation}){
                 headers:headers
             })
             .then((response)=>response.json().catch(()=>alert('Une erreur s\'est produite, veuillez réessayer plus tard.')))
-            .then((response)=>{
-                return response;
-            })
             .catch((error)=>alert("ERREUR : "+error));
         
             setRessources(response);

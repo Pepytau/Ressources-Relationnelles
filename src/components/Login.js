@@ -70,8 +70,8 @@ export default function Login({navigation}){
     return (
             <View style={styles.background}>
                 <Text style={styles.title}>Bienvenue sur (Re)sources Relationnelles !</Text>
-                <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
-                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
+                <TextInput placeholder="Adresse e-mail" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
+                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
                 <TouchableOpacity style={styles.button} onPress={this.connect}>
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>

@@ -83,8 +83,8 @@ export default function Discover({navigation}){
                 </View>
             </Modal>
             <Text style={styles.title}>Créer une nouvelle Ressource</Text>
-                <TextInput placeholder="Titre de la ressource" placeholderTextColor="black" style={styles.textInput} onChangeText={title=>setTitle(title)}/>
-                <TextInput placeholder="Contenu" placeholderTextColor="black" multiline style={styles.textInput} onChangeText={content=>setContent(content)}/>
+                <TextInput placeholder="Titre de la ressource" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={title=>setTitle(title)}/>
+                <TextInput placeholder="Contenu" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setContent(content)}/>
                 <TouchableOpacity style={styles.button} onPress={this.createRessource}>
                     <Text style={styles.buttonText}>Créer ressource</Text>
                 </TouchableOpacity>
