@@ -19,7 +19,7 @@ export default function Discover({navigation}){
                 <TextInput placeholder="Titre de la ressource" placeholderTextColor="black" style={styles.textInput}/>
                 <TextInput placeholder="Contenu" placeholderTextColor="black" multiline style={styles.textInput}/>
                 <TouchableOpacity style={styles.button} onPress={this.connect}>
-                    <Text style={styles.buttonText}>Se connecter</Text>
+                    <Text style={styles.buttonText}>Créer ressource</Text>
                 </TouchableOpacity>
             <View style={styles.bottomTab}>
                 <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.navigate('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
