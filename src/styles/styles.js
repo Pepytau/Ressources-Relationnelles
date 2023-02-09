@@ -210,6 +210,22 @@ export default styles = StyleSheet.create({
         width: '90%',
         margin: '3%',
         maxHeight: '50%'
+    },
+    pickerWrapper: {
+        alignSelf: "center",
+        color: "black",
+        backgroundColor: "white",
+        borderRadius: 10,
+        borderWidth: 1,
+        width: '85%',
+        margin: '3%',
+    },
+    picker: {
+        alignSelf: "center",
+        color: "black",
+        fontFamily: 'Raleway-SemiBold',
+        borderRadius: 10,
+        width: '100%',
     }
     
   });

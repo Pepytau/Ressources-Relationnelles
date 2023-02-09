@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGlobalState } from "../../App";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Picker } from "@react-native-picker/picker";
 import { 
     Text,   
     View,
@@ -11,12 +12,14 @@ import {
 } from 'react-native';
 
 import styles from "../styles/styles";
+import { color } from "react-native-reanimated";
 
 export default function Discover({navigation}){
     const [state, dispatch] = useGlobalState();
     const [title, setTitle] = useState(0);
     const [content, setContent] = useState(0);
     const [modalVisible, setModalVisible] = useState(0);
+    const [type, setType] = useState(0);
 
     createRessource = async () => {
         var apiUrl = "http://ezraspberryapis.ddns.net/apis/createRessource.api.php";
@@ -29,6 +32,7 @@ export default function Discover({navigation}){
         formdata.append("title",title);
         formdata.append("content",content);
         formdata.append("creator",state.surname);
+        formdata.append("type",type);
         
         const response = await fetch(apiUrl,
         {
@@ -44,10 +48,6 @@ export default function Discover({navigation}){
         
         switch (response.code) {
             case '0001':
-                dispatch({ mail: response.mail });
-                dispatch({ name: response.nom });
-                dispatch({ firstName: response.prenom });
-                dispatch({ surname: response.alias });
                 setModalVisible(true);
                 break;
             case '0003': 
@@ -83,11 +83,29 @@ export default function Discover({navigation}){
                 </View>
             </Modal>
             <Text style={styles.title}>Créer une nouvelle Ressource</Text>
-                <TextInput placeholder="Titre de la ressource" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={title=>setTitle(title)}/>
-                <TextInput placeholder="Contenu" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setContent(content)}/>
-                <TouchableOpacity style={styles.button} onPress={this.createRessource}>
-                    <Text style={styles.buttonText}>Créer ressource</Text>
-                </TouchableOpacity>
+            <TextInput placeholder="Titre de la ressource" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={title=>setTitle(title)}/>
+            <TextInput placeholder="Contenu" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setContent(content)}/>
+            <View style={styles.pickerWrapper}>
+                <Picker
+                selectedValue={type}
+                style={styles.picker}
+                dropdownIconColor={'black'}
+                onValueChange={(itemValue, itemIndex) =>
+                    setType(itemValue)}>
+                    <Picker.Item label="Type" value="Type" enabled={false}/>
+                    <Picker.Item label="Activité" value="Activité" />
+                    <Picker.Item label="Article" value="Article" />
+                    <Picker.Item label="Défi" value="Défi" />
+                    <Picker.Item label="Vidéo" value="Vidéo" />
+                    <Picker.Item label="Exercice" value="Exercice" />
+                    <Picker.Item label="Cours" value="Cours" />
+                    <Picker.Item label="Jeu en ligne" value="Jeu en ligne" />
+                    <Picker.Item label="Fiche Lecture" value="Fiche Lecture" />
+                </Picker>
+            </View>
+            <TouchableOpacity style={styles.button} onPress={this.createRessource}>
+                <Text style={styles.buttonText}>Créer ressource</Text>
+            </TouchableOpacity>
             <View style={styles.bottomTab}>
                 <View style={styles.firstBottomButton}><TouchableOpacity  onPress={() => navigation.replace('Menu')}><Image style={styles.bottomImages} source={require('../images/home.png')}/><Text style={styles.bottomButtonText}>Menu</Text></TouchableOpacity></View>
                 <View style={styles.bottomButton}><TouchableOpacity onPress={() => navigation.replace('Search')}><Image style={styles.bottomImages} source={require('../images/search.png')}/><Text style={styles.bottomButtonText}>Recherche</Text></TouchableOpacity></View>
