@@ -4,7 +4,7 @@ import {
     Text,
     View,
     StyleSheet,
-    TextInput 
+    TextInput,
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import publicIP from 'react-native-public-ip';
@@ -53,7 +53,7 @@ export default function Login({navigation}){
             dispatch({ name: response.nom });
             dispatch({ firstName: response.prenom });
             dispatch({ surname: response.alias });
-            navigation.navigate('Menu');
+            navigation.replace('Menu');
             break;
         case '0002': 
             alert('Mot de passe incorrect.');

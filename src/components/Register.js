@@ -4,7 +4,9 @@ import {
     Text,
     View,
     StyleSheet,
-    TextInput 
+    TextInput,
+    Modal,
+    Pressable
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import publicIP from 'react-native-public-ip';
@@ -19,6 +21,7 @@ export default function Register({navigation}){
     const [surname, setSurname] = useState(0);
     const [name, setName] = useState(0);
     const [firstName, setFirstName] = useState(0);
+    const [modalVisible, setModalVisible] = useState(0);
 
     register = async () => {
         var apiUrl = "http://ezraspberryapis.ddns.net/apis/createAccount.api.php";
@@ -55,8 +58,7 @@ export default function Register({navigation}){
         
         switch (response.code) {
             case '0001':
-                alert("Compte créé avec succès ! Veuillez vous connecter")
-                navigation.navigate('Login');
+                setModalVisible(true);
                 break;
             case '0006': 
                 alert('Un ou plusieurs champs sont vides');
@@ -109,7 +111,7 @@ export default function Register({navigation}){
                     dispatch({ name: response.nom });
                     dispatch({ firstName: response.prenom });
                     dispatch({ surname: response.alias });
-                    navigation.navigate('Menu');
+                    navigation.replace('Menu');
                     break;
                 case '0002': 
                     alert('Mot de passe incorrect.');
@@ -125,6 +127,28 @@ export default function Register({navigation}){
 
     return (
             <View style={styles.background}>
+                <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                setModalVisible(!modalVisible);
+                navigation.replace('Login');
+                }}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Compte créé avec succès ! Veuillez vous connecter</Text>
+                            <Pressable
+                                style={[styles.buttonModal,styles.buttonClose]}
+                                onPress={() => {
+                                    console.log('test');
+                                    setModalVisible(!modalVisible);
+                                    navigation.replace('Login');}}>
+                                <Text style={styles.textStyle}>OK</Text>
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
                 <Text style={styles.title}>S'enregistrer</Text>
                 <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
                 <TextInput placeholder="Pseudo" placeholderTextColor="black" style={styles.textInput} onChangeText={surname=>setSurname(surname)}/>
