@@ -19,7 +19,7 @@ export default function Search({navigation}){
     const [state, dispatch] = useGlobalState();
 
     searchRessource = async () => {
-        var apiUrl = `http://ezraspberryapis.ddns.net/apis/searchRessource.api.php?search=${encodeURIComponent(search)}`;
+        var apiUrl = `https://ezraspberryapis.ddns.net/apis/searchRessource.api.php?search=${encodeURIComponent(search)}`;
         var headers = {
             'Accept':'application/json',
             'Content-Type':'multipart/form-data',
@@ -43,6 +43,8 @@ export default function Search({navigation}){
         <View style={styles.background}>
             <Text style={styles.title}>Recherche</Text>
             <TextInput placeholder="🔎 Rechercher une ressource" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.searchBar} onChangeText={search=>{setSearch(search);this.searchRessource()}}/>
+            <TextInput placeholder="Localisation" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setLocalisation(localisation)}/>
+            
             <View style={searchStyles.scrollViewWrapper}>
                 <ScrollView>
                     {RessourceList}
