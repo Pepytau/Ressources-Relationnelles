@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native'
 export default styles = StyleSheet.create({
     background: {
         height: "100%",
-        backgroundColor: '#59981A'
+        backgroundColor: '#FEFEE292'
     },
     title: {
       fontSize: 30,
       margin:'5%',
       textAlign: 'center',  
-      color: "black",
+      color: "#582900",
       fontFamily: 'Raleway-Bold'
     },
     secondaryTitle:{
@@ -16,7 +16,7 @@ export default styles = StyleSheet.create({
         alignSelf: "center",
         margin:'2%',
         textAlign: 'center',  
-        color: "black",
+        color: "#582900",
         fontFamily: 'Raleway-SemiBold'
     },
     tertiaryTitle:{
@@ -95,7 +95,7 @@ export default styles = StyleSheet.create({
     recommendedRessource:{
             flex: 1,
             borderRadius: 10,
-            backgroundColor: "#3D550C",
+            backgroundColor: "#696969",
     },
     recommendedRessourceTitle:{
         fontSize:25,

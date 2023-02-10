@@ -21,7 +21,7 @@ export default function Register({navigation}){
     const [firstName, setFirstName] = useState(0);
 
     register = async () => {
-        var apiUrl = "http://ezraspberryapis.ddns.net/apis/createAccount.api.php";
+        var apiUrl = "https://ezraspberryapis.ddns.net/apis/createAccount.api.php";
         var formdata = new FormData();
         var headers = {
             'Accept':'application/json',
@@ -74,7 +74,7 @@ export default function Register({navigation}){
         }
 
         connect = async () => {
-            var apiUrl = "http://ezraspberryapis.ddns.net/apis/login.api.php";
+            var apiUrl = "https://ezraspberryapis.ddns.net/apis/login.api.php";
             var formdata = new FormData();
             var headers = {
                 'Accept':'application/json',

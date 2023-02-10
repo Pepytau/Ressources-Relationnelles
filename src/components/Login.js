@@ -18,7 +18,7 @@ export default function Login({navigation}){
     const [pwd, setPwd] = useState(0);
 
     connect = async () => {
-    var apiUrl = "http://ezraspberryapis.ddns.net/apis/login.api.php";
+    var apiUrl = "https://ezraspberryapis.ddns.net/apis/login.api.php";
     var formdata = new FormData();
     var headers = {
         'Accept':'application/json',
