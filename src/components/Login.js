@@ -4,7 +4,7 @@ import {
     Text,
     View,
     StyleSheet,
-    TextInput 
+    TextInput,
   } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import publicIP from 'react-native-public-ip';
@@ -53,7 +53,7 @@ export default function Login({navigation}){
             dispatch({ name: response.nom });
             dispatch({ firstName: response.prenom });
             dispatch({ surname: response.alias });
-            navigation.navigate('Menu');
+            navigation.replace('Menu');
             break;
         case '0002': 
             alert('Mot de passe incorrect.');
@@ -70,8 +70,8 @@ export default function Login({navigation}){
     return (
             <View style={styles.background}>
                 <Text style={styles.title}>Bienvenue sur (Re)sources Relationnelles !</Text>
-                <TextInput placeholder="Adresse e-mail" placeholderTextColor="black" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
-                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="black" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
+                <TextInput placeholder="Adresse e-mail" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={mail=>setMail(mail)}/>
+                <TextInput placeholder="Mot de passe" secureTextEntry={true} placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={pwd=>setPwd(pwd)}/>
                 <TouchableOpacity style={styles.button} onPress={this.connect}>
                     <Text style={styles.buttonText}>Se connecter</Text>
                 </TouchableOpacity>

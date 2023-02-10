@@ -16,11 +16,10 @@ export default function RessourceDetail({navigation, route}){
     return(
         <View style={styles.background}>
             <View style={styles.banner}>
-                    <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}><Image style={styles.backArrow}  source={require('../images/backArrow.png')}/></TouchableOpacity>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}><Image style={styles.backArrow}  source={require('../images/backArrow.png')}/></TouchableOpacity>
                 <View style={styles.bannerText}>
                     <Text style={styles.bannerTitle}>{ressource.titre}</Text>
-                    <Text style={styles.bannerInfos}>Créée le  <Moment format="DD/MM/YYYY" element={Text}>{ressource.dateCreation}</Moment> par {ressource.createur}</Text>
-                   
+                    <Text style={styles.bannerInfos}>Créée le <Moment format="DD/MM/YYYY" element={Text}>{ressource.dateCreation}</Moment> par {ressource.createur}</Text> 
                 </View>
             </View>
             <ScrollView>

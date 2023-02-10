@@ -64,7 +64,7 @@ export default function App() {
     <GlobalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={Login} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec },cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }} />
           <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec }, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
           <Stack.Screen name="RessourceDetail" component={RessourceDetail} options={{ headerShown: false, transitionSpec: { open : TransitionSpecs.TransitionIOSSpec, close : TransitionSpecs.TransitionIOSSpec }, cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}} />
           <Stack.Screen name="Search" component={Search} options={{ headerShown: false, transitionSpec: { open : animation, close : animation },cardStyleInterpolator: forFade}} />
