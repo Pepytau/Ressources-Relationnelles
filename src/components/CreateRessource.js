@@ -85,6 +85,7 @@ export default function Discover({navigation}){
             <Text style={styles.title}>Créer une nouvelle Ressource</Text>
             <TextInput placeholder="Titre de la ressource" placeholderTextColor="rgba(0, 0, 0, 0.6)" style={styles.textInput} onChangeText={title=>setTitle(title)}/>
             <TextInput placeholder="Contenu" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setContent(content)}/>
+            <TextInput placeholder="Localisation" placeholderTextColor="rgba(0, 0, 0, 0.6)" multiline style={styles.textInput} onChangeText={content=>setLocalisation(localisation)}/>
             <View style={styles.pickerWrapper}>
                 <Picker
                 selectedValue={type}
