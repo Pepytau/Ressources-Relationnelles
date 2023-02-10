@@ -20,6 +20,7 @@ export default function RessourceDetail({navigation, route}){
                 <View style={styles.bannerText}>
                     <Text style={styles.bannerTitle}>{ressource.titre}</Text>
                     <Text style={styles.bannerInfos}>Créée le <Moment format="DD/MM/YYYY" element={Text}>{ressource.dateCreation}</Moment> par {ressource.createur}</Text> 
+                    <Text style={styles.bannerInfos}>Ressource de type {ressource.type} dans la ville de {ressource.localisation}</Text>
                 </View>
             </View>
             <ScrollView>
