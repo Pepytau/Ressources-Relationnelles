@@ -226,6 +226,36 @@ export default styles = StyleSheet.create({
         fontFamily: 'Raleway-SemiBold',
         borderRadius: 10,
         width: '100%',
-    }
+    },
+    bottomBanner: {
+        alignSelf: "center",
+        position: "absolute",
+        bottom:0,
+        width: '100%',
+        height: 60,
+        borderTopWidth: 1,
+        borderTopColor: "rgba(255, 255, 255, 0.3)",
+        backgroundColor: '#283618',
+    },
+    bottomBannerBtn: {
+        height: '100%',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    bottomBannerBtnTxt: {
+        fontFamily: 'Raleway-Bold',
+        fontSize: 20,
+        color: 'white',
+        marginLeft: '5%',
+    },
+    bottomBannerImages:{
+        alignSelf:"center",
+        height:15,
+        width:15,
+        marginRight: '5%',
+        transform: [{ rotate: '90deg'}]
+    },
     
   });

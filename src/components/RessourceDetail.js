@@ -25,6 +25,12 @@ export default function RessourceDetail({navigation, route}){
             <ScrollView>
                 <Text style={styles.contentText}>{ressource.contenu}</Text>
             </ScrollView>
+            <View style={styles.bottomBanner}>
+                <TouchableOpacity style={styles.bottomBannerBtn} onPress={() => navigation.navigate('CommentsList')}>
+                    <Text style={styles.bottomBannerBtnTxt}>Commentaires</Text>
+                    <Image style={styles.bottomBannerImages} source={require('../images/whiteArrow.png')}/>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
