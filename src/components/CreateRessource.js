@@ -104,6 +104,19 @@ export default function Discover({navigation}){
                     <Picker.Item label="Fiche Lecture" value="Fiche Lecture" />
                 </Picker>
             </View>
+            <View style={styles.pickerWrapper}>
+                <Picker
+                selectedValue={type} //a remplacer par value scope
+                style={styles.picker}
+                dropdownIconColor={'black'}
+                onValueChange={(itemValue, itemIndex) =>
+                    setType(itemValue)}>
+                    <Picker.Item label="Portée" value="Portée" enabled={false}/>
+                    <Picker.Item label="Privée" value="Privée" />
+                    <Picker.Item label="Publique" value="Publique" />
+                    <Picker.Item label="Amis" value="Amis" />
+                </Picker>
+            </View>
             <TouchableOpacity style={styles.button} onPress={this.createRessource}>
                 <Text style={styles.buttonText}>Créer ressource</Text>
             </TouchableOpacity>
